@@ -73,7 +73,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                 FilamentShieldPlugin::make(),
                 \ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin::make()
-                    ->usingPage(\ShuvroRoy\FilamentSpatieLaravelBackup\Pages\Backups::class),
+                    ->usingPage(\App\Filament\Pages\Backups::class),
             ])
             ->authMiddleware([
                 Authenticate::class,

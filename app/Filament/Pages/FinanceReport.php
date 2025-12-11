@@ -20,6 +20,12 @@ class FinanceReport extends Page implements HasForms
     protected static ?string $navigationGroup = 'Tesorería';
     protected static ?string $title = 'Corte de Caja General';
 
+    public static function canAccess(): bool
+    {
+        // Solo Super Admin y Tesorero pueden ver el dinero
+        return auth()->user()->hasAnyRole(['super_admin', 'tesorero']);
+    }
+
     // Definir acciones de la página
     protected function getActions(): array
     {

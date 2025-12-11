@@ -21,6 +21,12 @@ class ActivityLogResource extends Resource
     protected static ?string $modelLabel = 'Movimiento';
     protected static ?string $pluralModelLabel = 'Bitácora de Movimientos';
 
+    public static function canViewAny(): bool
+    {
+        // Solo el Super Admin debería ver la auditoría de seguridad
+        return auth()->user()->hasRole('super_admin');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
